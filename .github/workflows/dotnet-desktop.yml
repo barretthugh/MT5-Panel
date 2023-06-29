@@ -21,7 +21,11 @@ jobs:
       run: dotnet build Terminal.sln      
     - id: tag_name
       run: echo "version=$(date +v%Y.%m.%d)" >> "$GITHUB_OUTPUT"
-    - uses: softprops/action-gh-release@v1
+    - name: create release
+      uses: softprops/action-gh-release@v1
       with:
-       tag_name: ${{ steps.tag_name.outputs.version }}
-       files: Terminal/bin/Debug/MQLibrary.exe
+        files: Terminal/bin/Debug/MQLibrary.exe
+        tag_name: ${{ steps.tag_name.outputs.version }}
+        
+        
+       
