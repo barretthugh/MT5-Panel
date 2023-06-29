@@ -68,7 +68,7 @@ namespace MQPanel
                 serverPipe.Read(inputOperation, 0, operationSize);
                 var deal = Communication.ConvertFrom<OperationData>(inputOperation);
 
-                if (_order.OrderStatus == 1)
+                if (_order.OrderStatus >= 1)
                 {
                   Delegation.SetDealDelegates(deal, _order);
 

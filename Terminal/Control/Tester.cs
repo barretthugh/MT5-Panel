@@ -41,6 +41,8 @@ namespace MQPanel.Control
     {
       InitializeComponent();
 
+      this.ContextMenuStrip = rightClickMenu;
+
       var OrderTypes = new Dictionary<ENUM_ORDER_TYPE, string>
       {
         { ENUM_ORDER_TYPE.ORDER_TYPE_BUY_STOP, "BUY STOP" },
@@ -167,7 +169,9 @@ namespace MQPanel.Control
         UpdateGridActions(PositionsGrid, new Dictionary<string, string>
         {
           { "PositionsColumnActionsRemove", "X" },
-          { "PositionsColumnActionsBreakeven", "B" }
+          { "PositionsColumnActionsBreakeven", "B" },
+          { "PositionsColumnActionsSLTPToAll", "S" },
+          { "PositionsColumnActionsCloseAll", "A" },
         });
       });
     }
@@ -211,7 +215,7 @@ namespace MQPanel.Control
         {
           grid.Rows.Insert(0,
             item.Id,
-            baseTime.AddSeconds(item.Time).ToString("yyyy.MM.dd HH:mm"),
+            baseTime.AddSeconds(item.Time).ToString("MM-dd HH:mm"),
             Encoding.Default.GetString(Encoding.Default.GetBytes(item.Currency)).Trim('\0'),
             Encoding.Default.GetString(Encoding.Default.GetBytes(item.Type)).Trim('\0'),
             Communication.S(item.Volume),
@@ -350,12 +354,10 @@ namespace MQPanel.Control
       return true;
     }
 
-    public void RemovePosition(DataGridViewRow selection)
+    public void RemovePosition(DataGridViewRow selection, ulong multi=1)
     {
       var order = new OrderData();
-      var orderType = Communication.S(selection.Cells["PositionsColumnOperation"].Value).ToUpper().Contains("BUY") ?
-        Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_SELL) :
-        Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_BUY);
+      var orderType = Communication.S(selection.Cells["PositionsColumnOperation"].Value).ToUpper().Contains("BUY") ? Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_BUY) : Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_SELL);
 
       order.TypeTime = Communication.U(ENUM_ORDER_TYPE_TIME.ORDER_TIME_GTC);
       order.TypeFilling = Communication.U(ENUM_ORDER_TYPE_FILLING.ORDER_FILLING_FOK);
@@ -363,22 +365,26 @@ namespace MQPanel.Control
       order.Volume = Communication.D(selection.Cells["PositionsColumnLots"].Value);
       order.Currency = Communication.S(selection.Cells["PositionsColumnSymbol"].Value).PadRight(Constants.SMALL_CHAR).ToCharArray();
       order.Type = orderType;
-      order.OrderStatus = 1;
+      order.Ticket = Communication.U(selection.Cells["PositionsColumnId"].Value);
+      order.OrderStatus = multi;
       order.Deviation = 0;
 
       Delegation.SetTradeDelegates(order, string.Empty);
     }
 
-    public void ChangePosition(DataGridViewRow selection)
+    public void ChangePosition(DataGridViewRow selection, ulong multi=1)
     {
       var order = new OrderData();
+      var orderType = Communication.S(selection.Cells["PositionsColumnOperation"].Value).ToUpper().Contains("BUY") ? Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_BUY) : Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_SELL);
 
       order.TypeTime = Communication.U(ENUM_ORDER_TYPE_TIME.ORDER_TIME_GTC);
       order.Action = Communication.U(ENUM_TRADE_REQUEST_ACTIONS.TRADE_ACTION_SLTP);
       order.SL = Communication.D(selection.Cells["PositionsColumnSL"].Value);
       order.TP = Communication.D(selection.Cells["PositionsColumnTP"].Value);
       order.Currency = Communication.S(selection.Cells["PositionsColumnSymbol"].Value).PadRight(Constants.SMALL_CHAR).ToCharArray();
-      order.OrderStatus = 1;
+      order.OrderStatus = multi;
+      order.Type = orderType;
+      order.Ticket = Communication.U(selection.Cells["PositionsColumnId"].Value);
 
       Delegation.SetTradeDelegates(order, string.Empty);
     }
@@ -671,6 +677,16 @@ namespace MQPanel.Control
             RemovePosition(activeCell.OwningRow);
           }
 
+          if (name.Equals("PositionsColumnActionsSLTPToAll"))
+          {
+            ChangePosition(activeCell.OwningRow, 2);
+          }
+
+          if (name.Equals("PositionsColumnActionsCloseAll"))
+          {
+            RemovePosition(activeCell.OwningRow, 2);
+          }
+
           if (name.Equals("OrdersColumnActionsRemove"))
           {
             RemoveOrder(activeCell.OwningRow);
@@ -683,5 +699,17 @@ namespace MQPanel.Control
         }
       }
     }
-  }
+
+        private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (((ToolStripMenuItem)rightClickMenu.Items[0]).Checked == true)
+            {
+                this.TopMost = true;
+            }
+            else
+            {
+                this.TopMost = false;
+            }
+        }
+    }
 }

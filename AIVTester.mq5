@@ -187,7 +187,7 @@ int OnInit()
         EventSetTimer(1);
     }
 
-    return(0);
+    return(INIT_SUCCEEDED);
 }
 
 void OnDeinit(const int reason)
@@ -216,7 +216,7 @@ void Communication()
     symbolClass.Name(_Symbol);
     symbolClass.RefreshRates();
     
-    PriceData price = {0};
+    PriceData price = {};
 
     double close[], open[], high[], low[];
 
@@ -246,63 +246,74 @@ void Communication()
     
     iClient.GetOrder(order);
  
-    MqlTradeResult result = {0};
-    MqlTradeRequest query = {0};
+    MqlTradeResult result = {};
+    MqlTradeRequest query = {};
 
-    OperationData operation = {0};
+    OperationData operation = {};
     
     if (order.OrderStatus > 0)
     {
-        query.magic = iClient.Magic;
-        query.volume = NormalizeDouble(order.Volume, _Digits);
-        query.tp = NormalizeDouble(order.TP, _Digits);
-        query.sl = NormalizeDouble(order.SL, _Digits);
-        query.order = order.Ticket;
-        query.deviation = order.Deviation;
-        query.type = iOrderTypes[int(order.Type)];
-        query.action = iActions[int(order.Action)];
-        query.type_time = iTimeTypes[int(order.TypeTime)];
-        query.type_filling = iFillTypes[int(order.TypeFilling)];
-        query.symbol = Trim(CharArrayToString(order.Currency, 0, sizeof(order.Currency)));
-        query.comment = CharArrayToString(order.Comments, 0, sizeof(order.Comments));
-
-        if (StringLen(query.symbol) < 1)
+        if (order.OrderStatus == 2)
         {
-            query.symbol = _Symbol;
+            if (iActions[int(order.Action)] == TRADE_ACTION_SLTP)
+                PositionModifyAll(Trim(CharArrayToString(order.Currency, 0, sizeof(order.Currency))), iOrderTypes[int(order.Type)], NormalizeDouble(order.SL, _Digits), NormalizeDouble(order.TP, _Digits));
+            else
+                PositionCloseAll(Trim(CharArrayToString(order.Currency, 0, sizeof(order.Currency))), iOrderTypes[int(order.Type)]);
         }
-
-        // Find best price
-
-        bool success = FindBestPrice(query, result, symbolClass);
-
-        if (success == false)
+        else
         {
-            if (order.Price)
+            query.magic = iClient.Magic;
+            query.volume = NormalizeDouble(order.Volume, _Digits);
+            query.tp = NormalizeDouble(order.TP, _Digits);
+            query.sl = NormalizeDouble(order.SL, _Digits);
+            query.order = order.Ticket;
+            query.position = order.Ticket;
+            query.deviation = order.Deviation;
+            query.type = iOrderTypes[int(order.Type)];
+            query.action = iActions[int(order.Action)];
+            query.type_time = iTimeTypes[int(order.TypeTime)];
+            query.type_filling = 1; //iFillTypes[int(order.TypeFilling)];
+            query.symbol = Trim(CharArrayToString(order.Currency, 0, sizeof(order.Currency)));
+            query.comment = CharArrayToString(order.Comments, 0, sizeof(order.Comments));
+
+            if (StringLen(query.symbol) < 1)
             {
-                query.price = NormalizeDouble(order.Price, _Digits);
+                query.symbol = _Symbol;
             }
-        
-            success = OrderSend(query, result);
+
+            // Find best price
+
+            bool success = FindBestPrice(query, result, symbolClass);
+
+            if (success == false)
+            {
+                if (order.Price)
+                {
+                    query.price = NormalizeDouble(order.Price, _Digits);
+                }
+            
+                success = OrderSend(query, result);
+            }
+            
+            operation.RequestId = result.request_id;
+            operation.ReturnCode = result.retcode;
+            operation.Deal = result.deal;
+            operation.Order = result.order;
+            operation.Volume = result.volume;
+            operation.Price = result.price;
+            operation.Bid = result.bid;
+            operation.Ask = result.ask;
+            operation.DealStatus = success ? 1 : 0;
+            
+            StringToCharArray(GetErrorDescription(result.retcode), operation.Message, 0, sizeof(operation.Message));
         }
-        
-        operation.RequestId = result.request_id;
-        operation.ReturnCode = result.retcode;
-        operation.Deal = result.deal;
-        operation.Order = result.order;
-        operation.Volume = result.volume;
-        operation.Price = result.price;
-        operation.Bid = result.bid;
-        operation.Ask = result.ask;
-        operation.DealStatus = success ? 1 : 0;
-        
-        StringToCharArray(GetErrorDescription(result.retcode), operation.Message, 0, sizeof(operation.Message));
     }
     
     iClient.SetOperation(operation);
     
     // Orders and positions count
     
-    CountData countData = {0};
+    CountData countData = {};
     
     HistorySelect(0, TimeCurrent());
     
@@ -319,7 +330,7 @@ void Communication()
     {
         string orderType;
         COrderInfo currentOrder;
-        PositionData positionData = {0};
+        PositionData positionData = {};
         
         currentOrder.SelectByIndex(i);
 
@@ -347,7 +358,7 @@ void Communication()
     {
         string positionType;
         CPositionInfo currentPosition;
-        PositionData positionData = {0};
+        PositionData positionData = {};
         
         currentPosition.SelectByIndex(i);
 
@@ -505,3 +516,39 @@ string Trim(string content)
     StringTrimRight(content);
     return(content);
 } 
+
+void PositionModifyAll(string symbol, ENUM_ORDER_TYPE type, double SL, double TP)
+{
+    CTrade m_trade;
+    CPositionInfo m_position;
+
+    m_trade.SetAsyncMode(true);
+    
+    for (int i=PositionsTotal()-1; i>=0; i--)
+    {
+        if(m_position.SelectByIndex(i))
+        {
+            if (int(m_position.PositionType())==int(type) && m_position.Symbol()==symbol)
+                if (!m_trade.PositionModify(m_position.Ticket(), SL, TP))
+                    Print(__FILE__," ",__FUNCTION__,", ERROR: ", symbol, " ", type, " PositionModify ",m_position.Ticket(),", ",m_trade.ResultRetcodeDescription());
+        }
+    }
+}
+
+void PositionCloseAll(string symbol, ENUM_ORDER_TYPE type)
+{
+    CTrade m_trade;
+    CPositionInfo m_position;
+
+    m_trade.SetAsyncMode(true);
+    
+    for (int i=PositionsTotal()-1; i>=0; i--)
+    {
+        if (m_position.SelectByIndex(i))
+        {
+            if (int(m_position.PositionType())==int(type) && m_position.Symbol()==symbol)
+                if (!m_trade.PositionClose(m_position.Ticket()))
+                    Print(__FILE__," ",__FUNCTION__,", ERROR: ", symbol, " ", type, " PositionClose ",m_position.Ticket(),", ",m_trade.ResultRetcodeDescription());
+        }
+    }
+}
