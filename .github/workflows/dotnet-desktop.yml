@@ -27,6 +27,8 @@ jobs:
         $TAG=get-date -Format "yyyy.MM.dd.HH.mm.ss"
         echo "$TAG"
         echo "tag=$TAG" >> $GITHUB_OUTPUT
+        git config user.name "GitHub Action"
+        git config user.email "barrettyip@gmail.com"
         git tag -a $TAG -m "Published version $TAG" ${GITHUB_SHA}
         git push origin $TAG
     - name: create release
