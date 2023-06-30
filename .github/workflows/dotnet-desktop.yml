@@ -1,14 +1,15 @@
-name: build a .NET app
+name: Build and Release
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
-
+    name: build exe
     runs-on: Windows-2019
     permissions:
       contents: write
@@ -20,23 +21,21 @@ jobs:
       with:
         dotnet-version: 3.1.x
     - name: build app
-      run: dotnet build .\Terminal.sln --configuration Release --no-restore      
-    - name: Tag the repository
-      id: tag
-      run: |
-        $TAG=get-date -Format "yyyy.MM.dd.HH.mm.ss"
-        echo "$TAG"
-        echo "tag=$TAG" >> $GITHUB_OUTPUT
-        git config user.name "GitHub Action"
-        git config user.email "barrettyip@gmail.com"
-        git tag -a $TAG -m "Published version $TAG" ${GITHUB_SHA}
-        git push origin $TAG
-    - name: create release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
+      run: dotnet build .\Terminal.sln --configuration Release --no-restore
+    - uses: actions/upload-artifact@v3
       with:
+          name: build
+          path: Terminal/bin/Release/MQLibrary.exe
+    - name: version
+      id: tag_name
+      run: |
+        echo "version=v$(get-date -Format "yy.MM.dd.hh")" >> $env:GITHUB_OUTPUT
+    - name: release
+      uses: softprops/action-gh-release@v1
+      with:
+        draft: true
         files: Terminal/bin/Release/MQLibrary.exe
-        tag_name: ${{ steps.tag.outputs.tag }}
+        tag_name: ${{ steps.tag_name.outputs.version }}
         
         
        
