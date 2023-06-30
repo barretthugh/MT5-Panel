@@ -18,11 +18,11 @@ jobs:
       with:
         dotnet-version: 3.1.x
     - name: build app
-      run: dotnet build Terminal.sln      
+      run: dotnet build .\Terminal.sln --configuration Release --no-restore      
     - name: Tag the repository
       id: tag
       run: |
-        TAG=v$(date -Iseconds | sed 's/[T:\+]/-/g')
+        $TAG=date -Format "yyyy.MM.dd.HH.mm.ss"
         echo "$TAG"
         echo "tag=$TAG" >> $GITHUB_OUTPUT
         git tag -a $TAG -m "Published version $TAG" ${GITHUB_SHA}
@@ -30,7 +30,7 @@ jobs:
     - name: create release
       uses: softprops/action-gh-release@v1
       with:
-        files: Terminal/bin/Debug/MQLibrary.exe
+        files: Terminal/bin/Release/MQLibrary.exe
         tag_name: ${{ steps.tag.outputs.tag }}
         
         
