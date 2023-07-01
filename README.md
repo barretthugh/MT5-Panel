@@ -7,6 +7,18 @@ Also, this panel can be used as an alternative to the standard one provided with
 
 ![](Screens/Preview.png)
 
+![](Screens/UI.png)
+
+# CHANGE LOG
+### 2023-06-30
+1. fixed bug for hedging account
+2. add "always on top" right click menu
+3. add set SL/TP to all positions (same symbol, same direction), async mode
+4. add close all positions (same symbol, same direction), async mode
+
+### 2023-07-02
+1. redesign UI
+
 # Links
 
 - Using panel in a [Tester Mode](https://www.youtube.com/watch?v=shHEjUIRyj0)

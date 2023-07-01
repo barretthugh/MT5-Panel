@@ -12,30 +12,9 @@ namespace MQPanel.Control
 {
   public partial class Tester : Form, IDisposable
   {
-    private bool _isClean = false;
     private CustomChannel _channel;
     private PriceData _price = new PriceData();
     private OperationData _operation = new OperationData();
-
-    public void Protect()
-    {
-      if (_isClean == false)
-      {
-        //Process.GetCurrentProcess().Kill();
-      }
-    }
-
-    public void Setup(string message)
-    {
-      if (string.IsNullOrEmpty(message) == false)
-      {
-        MessageBox.Show(message);
-      }
-
-      Process.GetCurrentProcess().Kill();
-
-      _isClean = true;
-    }
 
     public Tester()
     {
@@ -289,7 +268,6 @@ namespace MQPanel.Control
       order.TypeFilling = Communication.U(ENUM_ORDER_TYPE_FILLING.ORDER_FILLING_FOK);
       order.Action = Communication.U(ENUM_TRADE_REQUEST_ACTIONS.TRADE_ACTION_DEAL);
       order.TypeTime = Communication.U(ENUM_ORDER_TYPE_TIME.ORDER_TIME_GTC);
-      order.Comments = MarketTextComments.Text.PadRight(Constants.AVERAGE_CHAR).ToCharArray();
       order.Volume = Communication.D(MarketTextLots.Text);
       order.SL = Communication.D(MarketTextSL.Text);
       order.TP = Communication.D(MarketTextTP.Text);
@@ -357,7 +335,11 @@ namespace MQPanel.Control
     public void RemovePosition(DataGridViewRow selection, ulong multi=1)
     {
       var order = new OrderData();
-      var orderType = Communication.S(selection.Cells["PositionsColumnOperation"].Value).ToUpper().Contains("BUY") ? Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_BUY) : Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_SELL);
+      var orderType = Communication.S(selection.Cells["PositionsColumnOperation"].Value).ToUpper().Contains("BUY") ? Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_SELL) : Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_BUY);
+      if (multi > 1)
+      {
+        orderType = Communication.S(selection.Cells["PositionsColumnOperation"].Value).ToUpper().Contains("BUY") ? Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_BUY) : Communication.U(ENUM_ORDER_TYPE.ORDER_TYPE_SELL);
+      }
 
       order.TypeTime = Communication.U(ENUM_ORDER_TYPE_TIME.ORDER_TIME_GTC);
       order.TypeFilling = Communication.U(ENUM_ORDER_TYPE_FILLING.ORDER_FILLING_FOK);
@@ -543,8 +525,6 @@ namespace MQPanel.Control
 
     public void ConnectionButtonOpenClick(object sender, EventArgs e)
     {
-      Protect();
-
       var address = ConnectionTextServerName.Text;
 
       ConnectionLabelError.Text = "Provide correct server name";
@@ -560,45 +540,35 @@ namespace MQPanel.Control
 
     public void ConnectionButtonCloseClick(object sender, EventArgs e)
     {
-      Protect();
-
       CloseConnection("No connection");
     }
 
     public void MarketButtonBuyClick(object sender, EventArgs e)
     {
-      Protect();
-
       OrderData order = MarketOrderPrepare(ENUM_ORDER_TYPE.ORDER_TYPE_BUY);
 
       if (MarketOrderValidation(order))
       {
-        Delegation.SetTradeDelegates(order, MarketTextComments.Text);
+        Delegation.SetTradeDelegates(order, string.Empty);
         MarketTextSL.Text = string.Empty;
         MarketTextTP.Text = string.Empty;
-        MarketTextComments.Text = string.Empty;
       }
     }
 
     public void MarketButtonSellClick(object sender, EventArgs e)
     {
-      Protect();
-
       OrderData order = MarketOrderPrepare(ENUM_ORDER_TYPE.ORDER_TYPE_SELL);
 
       if (MarketOrderValidation(order))
       {
-        Delegation.SetTradeDelegates(order, MarketTextComments.Text);
+        Delegation.SetTradeDelegates(order, string.Empty);
         MarketTextSL.Text = string.Empty;
         MarketTextTP.Text = string.Empty;
-        MarketTextComments.Text = string.Empty;
       }
     }
 
     public void LimitButtonSendClick(object sender, EventArgs e)
     {
-      Protect();
-
       OrderData order = LimitOrderPrepare();
 
       if (LimitOrderValidation(order))
@@ -612,15 +582,11 @@ namespace MQPanel.Control
 
     public void LimitTextPriceCurrentClick(object sender, EventArgs e)
     {
-      Protect();
-
       LimitTextOpen.Text = LimitTextPriceCurrent.Text;
     }
 
     private void OrdersGridKeyDown(object sender, KeyEventArgs e)
     {
-      Protect();
-
       if (e.KeyCode == Keys.Delete)
       {
         HideEditors(OrdersGrid, OrdersGrid.CurrentCell.RowIndex, false);
@@ -630,8 +596,6 @@ namespace MQPanel.Control
 
     private void PositionsGridKeyDown(object sender, KeyEventArgs e)
     {
-      Protect();
-
       if (e.KeyCode == Keys.Delete)
       {
         HideEditors(PositionsGrid, PositionsGrid.CurrentCell.RowIndex, false);
@@ -641,8 +605,6 @@ namespace MQPanel.Control
 
     private void GridCellClick(object sender, DataGridViewCellEventArgs e)
     {
-      Protect();
-
       var indexRow = e.RowIndex;
       var indexColumn = e.ColumnIndex;
       var grid = sender as DataGridView;
@@ -668,7 +630,7 @@ namespace MQPanel.Control
             order.TP = Communication.D(selection.Cells["PositionsColumnTP"].Value);
             order.Currency = Communication.S(selection.Cells["PositionsColumnSymbol"].Value).PadRight(Constants.SMALL_CHAR).ToCharArray();
             order.OrderStatus = 1;
-
+            order.Ticket = Communication.U(selection.Cells["PositionsColumnId"].Value);
             Delegation.SetTradeDelegates(order, string.Empty);
           }
 
@@ -709,6 +671,133 @@ namespace MQPanel.Control
             else
             {
                 this.TopMost = false;
+            }
+        }
+
+        private void LimitTextComments_Enter(object sender, EventArgs e)
+        {
+            if (LimitTextComments.Text == "Comment..")
+            {
+                LimitTextComments.Text = "";
+                LimitTextComments.ForeColor = Color.Black;
+            }
+        }
+
+        private void LimitTextComments_Leave(object sender, EventArgs e)
+        {
+            if (LimitTextComments.Text == "")
+            {
+                LimitTextComments.Text = "Comment..";
+                LimitTextComments.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void MarketTextSL_Enter(object sender, EventArgs e)
+        {
+            if (MarketTextSL.Text == "Price")
+            {
+                MarketTextSL.Text = "";
+                MarketTextSL.ForeColor = Color.Black;
+            }
+        }
+
+        private void MarketTextSL_Leave(object sender, EventArgs e)
+        {
+            if (MarketTextSL.Text == "")
+            {
+                MarketTextSL.Text = "Price";
+                MarketTextSL.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void MarketTextSLPoints_Enter(object sender, EventArgs e)
+        {
+            if (MarketTextSLPoints.Text == "Pips")
+            {
+                MarketTextSLPoints.Text = "";
+                MarketTextSLPoints.ForeColor = Color.Black;
+            }
+        }
+
+        private void MarketTextSLPoints_Leave(object sender, EventArgs e)
+        {
+            if (MarketTextSLPoints.Text == "")
+            {
+                MarketTextSLPoints.Text = "Pips";
+                MarketTextSLPoints.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void MarketTextTP_Enter(object sender, EventArgs e)
+        {
+            if (MarketTextTP.Text == "Price")
+            {
+                MarketTextTP.Text = "";
+                MarketTextTP.ForeColor = Color.Black;
+            }
+        }
+
+        private void MarketTextTP_Leave(object sender, EventArgs e)
+        {
+            if (MarketTextTP.Text == "")
+            {
+                MarketTextTP.Text = "Price";
+                MarketTextTP.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void MarketTextTPPoints_Enter(object sender, EventArgs e)
+        {
+            if (MarketTextTPPoints.Text == "Pips")
+            {
+                MarketTextTPPoints.Text = "";
+                MarketTextTPPoints.ForeColor = Color.Black;
+            }
+        }
+
+        private void MarketTextTPPoints_Leave(object sender, EventArgs e)
+        {
+            if (MarketTextTPPoints.Text == "")
+            {
+                MarketTextTPPoints.Text = "Pips";
+                MarketTextTPPoints.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void MarketButtonBuy_Click(object sender, EventArgs e)
+        {
+            OrderData order = MarketOrderPrepare(ENUM_ORDER_TYPE.ORDER_TYPE_BUY);
+
+            if (MarketOrderValidation(order))
+            {
+                Delegation.SetTradeDelegates(order, string.Empty);
+                MarketTextSL.Text = string.Empty;
+                MarketTextTP.Text = string.Empty;
+            }
+        }
+
+        private void MarketButtonSell_Click(object sender, EventArgs e)
+        {
+            OrderData order = MarketOrderPrepare(ENUM_ORDER_TYPE.ORDER_TYPE_SELL);
+
+            if (MarketOrderValidation(order))
+            {
+                Delegation.SetTradeDelegates(order, string.Empty);
+                MarketTextSL.Text = string.Empty;
+                MarketTextTP.Text = string.Empty;
+            }
+        }
+
+        private void LimitButtonSend_Click(object sender, EventArgs e)
+        {
+            OrderData order = LimitOrderPrepare();
+
+            if (LimitOrderValidation(order))
+            {
+                Delegation.SetTradeDelegates(order, LimitTextComments.Text);
+                LimitTextSL.Text = string.Empty;
+                LimitTextTP.Text = string.Empty;
+                LimitTextComments.Text = string.Empty;
             }
         }
     }
