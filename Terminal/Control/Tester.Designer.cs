@@ -30,27 +30,27 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tester));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle127 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle128 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle129 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle130 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle131 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle132 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle133 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle134 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle135 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle136 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle137 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle138 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle139 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle140 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle141 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle142 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle143 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle144 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle145 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle146 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle147 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.TabConnection = new System.Windows.Forms.TabPage();
             this.ConnectionGroupDescription = new System.Windows.Forms.GroupBox();
@@ -123,6 +123,7 @@
             this.MainLabelMessage = new System.Windows.Forms.Label();
             this.rightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CurrentProfit = new System.Windows.Forms.TextBox();
             this.Tabs.SuspendLayout();
             this.TabConnection.SuspendLayout();
             this.ConnectionGroupDescription.SuspendLayout();
@@ -148,7 +149,7 @@
             this.Tabs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(985, 425);
+            this.Tabs.Size = new System.Drawing.Size(1025, 421);
             this.Tabs.TabIndex = 0;
             // 
             // TabConnection
@@ -267,7 +268,7 @@
             this.TabPagePositions.Location = new System.Drawing.Point(4, 29);
             this.TabPagePositions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TabPagePositions.Name = "TabPagePositions";
-            this.TabPagePositions.Size = new System.Drawing.Size(977, 392);
+            this.TabPagePositions.Size = new System.Drawing.Size(1017, 388);
             this.TabPagePositions.TabIndex = 6;
             this.TabPagePositions.Text = "Positions";
             this.TabPagePositions.UseVisualStyleBackColor = true;
@@ -306,7 +307,7 @@
             this.PositionsGrid.RowHeadersVisible = false;
             this.PositionsGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.PositionsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PositionsGrid.Size = new System.Drawing.Size(977, 332);
+            this.PositionsGrid.Size = new System.Drawing.Size(1017, 328);
             this.PositionsGrid.TabIndex = 2;
             this.PositionsGrid.TabStop = false;
             this.PositionsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellClick);
@@ -315,8 +316,8 @@
             // PositionsColumnId
             // 
             this.PositionsColumnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle127.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.PositionsColumnId.DefaultCellStyle = dataGridViewCellStyle127;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.PositionsColumnId.DefaultCellStyle = dataGridViewCellStyle1;
             this.PositionsColumnId.FillWeight = 5F;
             this.PositionsColumnId.Frozen = true;
             this.PositionsColumnId.HeaderText = "Id";
@@ -330,9 +331,9 @@
             // PositionsColumnTime
             // 
             this.PositionsColumnTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle128.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle128.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.PositionsColumnTime.DefaultCellStyle = dataGridViewCellStyle128;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.PositionsColumnTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.PositionsColumnTime.FillWeight = 150F;
             this.PositionsColumnTime.HeaderText = "Time";
             this.PositionsColumnTime.MinimumWidth = 100;
@@ -343,10 +344,10 @@
             // PositionsColumnSymbol
             // 
             this.PositionsColumnSymbol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle129.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle129.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle129.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PositionsColumnSymbol.DefaultCellStyle = dataGridViewCellStyle129;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PositionsColumnSymbol.DefaultCellStyle = dataGridViewCellStyle3;
             this.PositionsColumnSymbol.FillWeight = 136F;
             this.PositionsColumnSymbol.HeaderText = "Symbol";
             this.PositionsColumnSymbol.MinimumWidth = 8;
@@ -357,10 +358,10 @@
             // PositionsColumnOperation
             // 
             this.PositionsColumnOperation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle130.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle130.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle130.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PositionsColumnOperation.DefaultCellStyle = dataGridViewCellStyle130;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PositionsColumnOperation.DefaultCellStyle = dataGridViewCellStyle4;
             this.PositionsColumnOperation.FillWeight = 190F;
             this.PositionsColumnOperation.HeaderText = "Operation";
             this.PositionsColumnOperation.MinimumWidth = 8;
@@ -370,9 +371,9 @@
             // PositionsColumnLots
             // 
             this.PositionsColumnLots.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle131.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle131.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.PositionsColumnLots.DefaultCellStyle = dataGridViewCellStyle131;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.PositionsColumnLots.DefaultCellStyle = dataGridViewCellStyle5;
             this.PositionsColumnLots.HeaderText = "Lots";
             this.PositionsColumnLots.MinimumWidth = 8;
             this.PositionsColumnLots.Name = "PositionsColumnLots";
@@ -381,9 +382,9 @@
             // PositionsColumnOpening
             // 
             this.PositionsColumnOpening.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle132.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle132.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.PositionsColumnOpening.DefaultCellStyle = dataGridViewCellStyle132;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.PositionsColumnOpening.DefaultCellStyle = dataGridViewCellStyle6;
             this.PositionsColumnOpening.FillWeight = 150F;
             this.PositionsColumnOpening.HeaderText = "Opening";
             this.PositionsColumnOpening.MinimumWidth = 8;
@@ -393,10 +394,10 @@
             // PositionsColumnSL
             // 
             this.PositionsColumnSL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle133.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle133.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle133.SelectionForeColor = System.Drawing.Color.Black;
-            this.PositionsColumnSL.DefaultCellStyle = dataGridViewCellStyle133;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.PositionsColumnSL.DefaultCellStyle = dataGridViewCellStyle7;
             this.PositionsColumnSL.FillWeight = 150F;
             this.PositionsColumnSL.HeaderText = "SL";
             this.PositionsColumnSL.MinimumWidth = 8;
@@ -405,10 +406,10 @@
             // PositionsColumnTP
             // 
             this.PositionsColumnTP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle134.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle134.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle134.SelectionForeColor = System.Drawing.Color.Black;
-            this.PositionsColumnTP.DefaultCellStyle = dataGridViewCellStyle134;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.PositionsColumnTP.DefaultCellStyle = dataGridViewCellStyle8;
             this.PositionsColumnTP.FillWeight = 150F;
             this.PositionsColumnTP.HeaderText = "TP";
             this.PositionsColumnTP.MinimumWidth = 8;
@@ -417,9 +418,9 @@
             // PositionsColumnPrice
             // 
             this.PositionsColumnPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle135.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle135.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.PositionsColumnPrice.DefaultCellStyle = dataGridViewCellStyle135;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.PositionsColumnPrice.DefaultCellStyle = dataGridViewCellStyle9;
             this.PositionsColumnPrice.FillWeight = 150F;
             this.PositionsColumnPrice.HeaderText = "Price";
             this.PositionsColumnPrice.MinimumWidth = 8;
@@ -429,9 +430,9 @@
             // PositionsColumnProfit
             // 
             this.PositionsColumnProfit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle136.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle136.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.PositionsColumnProfit.DefaultCellStyle = dataGridViewCellStyle136;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.PositionsColumnProfit.DefaultCellStyle = dataGridViewCellStyle10;
             this.PositionsColumnProfit.FillWeight = 150F;
             this.PositionsColumnProfit.HeaderText = "Profit";
             this.PositionsColumnProfit.MinimumWidth = 8;
@@ -450,9 +451,9 @@
             // PositionsColumnActionsRemove
             // 
             this.PositionsColumnActionsRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle137.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle137.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PositionsColumnActionsRemove.DefaultCellStyle = dataGridViewCellStyle137;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PositionsColumnActionsRemove.DefaultCellStyle = dataGridViewCellStyle11;
             this.PositionsColumnActionsRemove.HeaderText = "";
             this.PositionsColumnActionsRemove.MinimumWidth = 25;
             this.PositionsColumnActionsRemove.Name = "PositionsColumnActionsRemove";
@@ -477,6 +478,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CurrentProfit);
             this.panel1.Controls.Add(this.MarketTextTPPoints);
             this.panel1.Controls.Add(this.MarketLabelTP);
             this.panel1.Controls.Add(this.MarketTextTP);
@@ -490,13 +492,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(977, 60);
+            this.panel1.Size = new System.Drawing.Size(1017, 60);
             this.panel1.TabIndex = 3;
             // 
             // MarketTextTPPoints
             // 
             this.MarketTextTPPoints.ForeColor = System.Drawing.Color.LightGray;
-            this.MarketTextTPPoints.Location = new System.Drawing.Point(840, 13);
+            this.MarketTextTPPoints.Location = new System.Drawing.Point(814, 13);
             this.MarketTextTPPoints.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MarketTextTPPoints.Name = "MarketTextTPPoints";
             this.MarketTextTPPoints.Size = new System.Drawing.Size(68, 26);
@@ -508,7 +510,7 @@
             // MarketLabelTP
             // 
             this.MarketLabelTP.AutoSize = true;
-            this.MarketLabelTP.Location = new System.Drawing.Point(693, 19);
+            this.MarketLabelTP.Location = new System.Drawing.Point(675, 19);
             this.MarketLabelTP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MarketLabelTP.Name = "MarketLabelTP";
             this.MarketLabelTP.Size = new System.Drawing.Size(28, 20);
@@ -518,7 +520,7 @@
             // MarketTextTP
             // 
             this.MarketTextTP.ForeColor = System.Drawing.Color.LightGray;
-            this.MarketTextTP.Location = new System.Drawing.Point(729, 15);
+            this.MarketTextTP.Location = new System.Drawing.Point(714, 15);
             this.MarketTextTP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MarketTextTP.Name = "MarketTextTP";
             this.MarketTextTP.Size = new System.Drawing.Size(84, 26);
@@ -530,7 +532,7 @@
             // MarketTextSLPoints
             // 
             this.MarketTextSLPoints.ForeColor = System.Drawing.Color.LightGray;
-            this.MarketTextSLPoints.Location = new System.Drawing.Point(601, 16);
+            this.MarketTextSLPoints.Location = new System.Drawing.Point(589, 16);
             this.MarketTextSLPoints.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MarketTextSLPoints.Name = "MarketTextSLPoints";
             this.MarketTextSLPoints.Size = new System.Drawing.Size(68, 26);
@@ -612,7 +614,7 @@
             this.TabPageOrders.Location = new System.Drawing.Point(4, 29);
             this.TabPageOrders.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TabPageOrders.Name = "TabPageOrders";
-            this.TabPageOrders.Size = new System.Drawing.Size(980, 376);
+            this.TabPageOrders.Size = new System.Drawing.Size(977, 392);
             this.TabPageOrders.TabIndex = 5;
             this.TabPageOrders.Text = "Orders";
             this.TabPageOrders.UseVisualStyleBackColor = true;
@@ -646,7 +648,7 @@
             this.OrdersGrid.RowHeadersVisible = false;
             this.OrdersGrid.RowHeadersWidth = 62;
             this.OrdersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.OrdersGrid.Size = new System.Drawing.Size(980, 221);
+            this.OrdersGrid.Size = new System.Drawing.Size(977, 237);
             this.OrdersGrid.TabIndex = 0;
             this.OrdersGrid.TabStop = false;
             this.OrdersGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellClick);
@@ -655,8 +657,8 @@
             // OrdersColumnId
             // 
             this.OrdersColumnId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle138.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.OrdersColumnId.DefaultCellStyle = dataGridViewCellStyle138;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.OrdersColumnId.DefaultCellStyle = dataGridViewCellStyle12;
             this.OrdersColumnId.FillWeight = 5F;
             this.OrdersColumnId.Frozen = true;
             this.OrdersColumnId.HeaderText = "Id";
@@ -671,10 +673,10 @@
             // OrdersColumnTime
             // 
             this.OrdersColumnTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle139.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle139.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle139.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.OrdersColumnTime.DefaultCellStyle = dataGridViewCellStyle139;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.OrdersColumnTime.DefaultCellStyle = dataGridViewCellStyle13;
             this.OrdersColumnTime.FillWeight = 270.863F;
             this.OrdersColumnTime.Frozen = true;
             this.OrdersColumnTime.HeaderText = "Time";
@@ -687,10 +689,10 @@
             // OrdersColumnSymbol
             // 
             this.OrdersColumnSymbol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle140.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle140.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle140.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.OrdersColumnSymbol.DefaultCellStyle = dataGridViewCellStyle140;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.OrdersColumnSymbol.DefaultCellStyle = dataGridViewCellStyle14;
             this.OrdersColumnSymbol.FillWeight = 135.4436F;
             this.OrdersColumnSymbol.Frozen = true;
             this.OrdersColumnSymbol.HeaderText = "Symbol";
@@ -703,9 +705,9 @@
             // OrdersColumnOperation
             // 
             this.OrdersColumnOperation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle141.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle141.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.OrdersColumnOperation.DefaultCellStyle = dataGridViewCellStyle141;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.OrdersColumnOperation.DefaultCellStyle = dataGridViewCellStyle15;
             this.OrdersColumnOperation.FillWeight = 196.0514F;
             this.OrdersColumnOperation.Frozen = true;
             this.OrdersColumnOperation.HeaderText = "Operation";
@@ -717,9 +719,9 @@
             // OrdersColumnLots
             // 
             this.OrdersColumnLots.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle142.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle142.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.OrdersColumnLots.DefaultCellStyle = dataGridViewCellStyle142;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.OrdersColumnLots.DefaultCellStyle = dataGridViewCellStyle16;
             this.OrdersColumnLots.FillWeight = 196.0514F;
             this.OrdersColumnLots.Frozen = true;
             this.OrdersColumnLots.HeaderText = "Lots";
@@ -730,10 +732,10 @@
             // 
             // OrdersColumnOpening
             // 
-            dataGridViewCellStyle143.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle143.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle143.SelectionForeColor = System.Drawing.Color.Black;
-            this.OrdersColumnOpening.DefaultCellStyle = dataGridViewCellStyle143;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            this.OrdersColumnOpening.DefaultCellStyle = dataGridViewCellStyle17;
             this.OrdersColumnOpening.FillWeight = 195.4679F;
             this.OrdersColumnOpening.HeaderText = "Opening";
             this.OrdersColumnOpening.MinimumWidth = 8;
@@ -741,10 +743,10 @@
             // 
             // OrdersColumnSL
             // 
-            dataGridViewCellStyle144.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle144.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle144.SelectionForeColor = System.Drawing.Color.Black;
-            this.OrdersColumnSL.DefaultCellStyle = dataGridViewCellStyle144;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            this.OrdersColumnSL.DefaultCellStyle = dataGridViewCellStyle18;
             this.OrdersColumnSL.FillWeight = 195.5955F;
             this.OrdersColumnSL.HeaderText = "SL";
             this.OrdersColumnSL.MinimumWidth = 8;
@@ -752,10 +754,10 @@
             // 
             // OrdersColumnTP
             // 
-            dataGridViewCellStyle145.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle145.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle145.SelectionForeColor = System.Drawing.Color.Black;
-            this.OrdersColumnTP.DefaultCellStyle = dataGridViewCellStyle145;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            this.OrdersColumnTP.DefaultCellStyle = dataGridViewCellStyle19;
             this.OrdersColumnTP.FillWeight = 198.6184F;
             this.OrdersColumnTP.HeaderText = "TP";
             this.OrdersColumnTP.MinimumWidth = 8;
@@ -763,9 +765,9 @@
             // 
             // OrdersColumnPrice
             // 
-            dataGridViewCellStyle146.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle146.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.OrdersColumnPrice.DefaultCellStyle = dataGridViewCellStyle146;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.OrdersColumnPrice.DefaultCellStyle = dataGridViewCellStyle20;
             this.OrdersColumnPrice.FillWeight = 195.1968F;
             this.OrdersColumnPrice.HeaderText = "Price";
             this.OrdersColumnPrice.MinimumWidth = 8;
@@ -774,9 +776,9 @@
             // 
             // OrdersColumnProfit
             // 
-            dataGridViewCellStyle147.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle147.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.OrdersColumnProfit.DefaultCellStyle = dataGridViewCellStyle147;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.OrdersColumnProfit.DefaultCellStyle = dataGridViewCellStyle21;
             this.OrdersColumnProfit.FillWeight = 195.3784F;
             this.OrdersColumnProfit.HeaderText = "Profit";
             this.OrdersColumnProfit.MinimumWidth = 8;
@@ -814,7 +816,7 @@
             this.LimitGroupPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.LimitGroupPrice.Name = "LimitGroupPrice";
             this.LimitGroupPrice.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.LimitGroupPrice.Size = new System.Drawing.Size(980, 155);
+            this.LimitGroupPrice.Size = new System.Drawing.Size(977, 155);
             this.LimitGroupPrice.TabIndex = 34;
             this.LimitGroupPrice.TabStop = false;
             // 
@@ -976,10 +978,10 @@
             this.PanelMessage.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.PanelMessage.Controls.Add(this.MainGroupMessage);
             this.PanelMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelMessage.Location = new System.Drawing.Point(0, 371);
+            this.PanelMessage.Location = new System.Drawing.Point(0, 367);
             this.PanelMessage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelMessage.Name = "PanelMessage";
-            this.PanelMessage.Size = new System.Drawing.Size(985, 54);
+            this.PanelMessage.Size = new System.Drawing.Size(1025, 54);
             this.PanelMessage.TabIndex = 1;
             // 
             // MainGroupMessage
@@ -990,7 +992,7 @@
             this.MainGroupMessage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MainGroupMessage.Name = "MainGroupMessage";
             this.MainGroupMessage.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MainGroupMessage.Size = new System.Drawing.Size(985, 54);
+            this.MainGroupMessage.Size = new System.Drawing.Size(1025, 54);
             this.MainGroupMessage.TabIndex = 0;
             this.MainGroupMessage.TabStop = false;
             // 
@@ -1020,11 +1022,20 @@
             this.alwaysOnTopToolStripMenuItem.Text = "Always on top";
             this.alwaysOnTopToolStripMenuItem.Click += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_Click);
             // 
+            // CurrentProfit
+            // 
+            this.CurrentProfit.BackColor = System.Drawing.SystemColors.Control;
+            this.CurrentProfit.Location = new System.Drawing.Point(905, 15);
+            this.CurrentProfit.Name = "CurrentProfit";
+            this.CurrentProfit.ReadOnly = true;
+            this.CurrentProfit.Size = new System.Drawing.Size(100, 26);
+            this.CurrentProfit.TabIndex = 38;
+            // 
             // Tester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 425);
+            this.ClientSize = new System.Drawing.Size(1025, 421);
             this.Controls.Add(this.PanelMessage);
             this.Controls.Add(this.Tabs);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1125,6 +1136,7 @@
         private System.Windows.Forms.Label LimitLabelTP;
         private System.Windows.Forms.TextBox LimitTextSL;
         private System.Windows.Forms.TextBox LimitTextTP;
+        private System.Windows.Forms.TextBox CurrentProfit;
     }
 }
 

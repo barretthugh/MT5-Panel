@@ -19,6 +19,9 @@ Also, this panel can be used as an alternative to the standard one provided with
 ### 2023-07-02
 1. redesign UI
 
+### 2023-07-03
+1. add a textbox to showing current profit
+
 # Links
 
 - Using panel in a [Tester Mode](https://www.youtube.com/watch?v=shHEjUIRyj0)

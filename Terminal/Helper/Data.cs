@@ -67,6 +67,7 @@ namespace MQPanel.Helper
     public double Spread;
     public double Capacity;
     public long Time;
+    public double CurrentProfit;
   };
 
   [StructLayout(LayoutKind.Sequential, Pack = 1)]

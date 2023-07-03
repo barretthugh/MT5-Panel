@@ -98,6 +98,7 @@ namespace MQPanel.Control
      {
        ConnectionLabelError.Text = "Trading is possible";
        LimitTextPriceCurrent.Text = Communication.S(_price.Close);
+       CurrentProfit.Text = Communication.S(_price.CurrentProfit);
        EnablePanel(true);
      });
     }

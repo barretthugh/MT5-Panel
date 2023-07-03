@@ -6,7 +6,7 @@
 #include <Files/FilePipe.mqh>
 
 input string InpAddress = "AIV"; // Custom connection name
-input bool InpUseBestPrice = true; // Find best price without spread
+input bool InpUseBestPrice = false; // Find best price without spread
 input int InpTrailingStep = 0; // Step for Trailing Stop in pips
 input int InpBreakeven = 0; // Level in pips which start trailing from
 
@@ -60,6 +60,7 @@ struct PriceData
     double Spread;
     double Capacity;
     datetime Time;
+    double CurrentProfit;
 };
 
 struct OrderData
@@ -237,6 +238,7 @@ void Communication()
     price.Open = open[0];
     price.High = high[0];
     price.Low = low[0];
+    price.CurrentProfit = AccountInfoDouble(ACCOUNT_PROFIT);
     
     iClient.SetPrice(price);
 
